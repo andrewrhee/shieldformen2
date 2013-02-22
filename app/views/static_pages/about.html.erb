@@ -31,7 +31,7 @@
 	<div id="myCarousel" class="carousel slide">
 		<div class="carousel-inner">
 			<div class="item active">
-				<a href="#"><img src="css/images/slide1.png" alt="Slide1" /></a>
+				<%= link_to image_tag("slide1.png", alt: "slide1"), "#" %>
 				<div class="carousel-caption">
 					<h4>First Thumbnail Label</h4>
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -39,7 +39,7 @@
 			</div><!-- end item -->
 
 			<div class="item">
-				<a href="#"><img src="css/images/slide2.png" alt="Slide2" /></a>
+				<%= link_to image_tag("slide2.png", alt: "slide2"), "#" %>
 				<div class="carousel-caption">
 					<h4>Second Thumbnail Label</h4>
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>

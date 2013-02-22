@@ -5,7 +5,7 @@
 	<div id="myCarousel" class="carousel slide">
 		<div class="carousel-inner">
 			<div class="item active">
-				<a href="#"><img src="css/images/slide1-large.png" alt="Slide1" /></a>
+				<%= link_to image_tag("slide1-large.png", alt: "Slide2"), "#" %>
 				<div class="carousel-caption">
 					<h4>First Thumbnail Label</h4>
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -13,7 +13,7 @@
 			</div><!-- end item -->
 
 			<div class="item">
-				<a href="#"><img src="css/images/slide2-large.png" alt="Slide2" /></a>
+				<%= link_to image_tag("slide2-large.png", alt: "Slide2"), "#" %>
 				<div class="carousel-caption">
 					<h4>Second Thumbnail Label</h4>
 					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -34,17 +34,17 @@
 <div id="featured">
 	<div class="featured-image">
 		<div class="span4 item">
-			<a href="#"><img src="css/images/cta1.png" alt="Free Trial" /></a>
+			<%= link_to image_tag("cta1.png", alt: "cta1"), "#" %>
 		</div><!-- free-trial -->
 	</div>
 	<div class="featured-image">
 		<div class="span4 item">
-			<a href="#"><img src="css/images/cta2.png" alt="cta2"></a>
+			<%= link_to image_tag("cta2.png", alt: "cta2"), "#" %>
 		</div>
 	</div>
 	<div class="featured-image last">
 		<div class="span4 item last">
-			<a href="#"><img src="css/images/cta3.png" alt="Free Product" /></a>
+			<%= link_to image_tag("cta3.png", alt: "cta3"), "#" %>
 		</div><!-- end featured-product -->
 	</div>
 </div>
@@ -58,25 +58,25 @@
 	<div id="benefits">
 		<h3>Benefits</h3>
 		<div class="span3 benefit">
-			<img src="css/images/natural.png" alt="" />
+			<%= image_tag("natural.png", alt:"nartual") %>
 			<h4>All Natural Ingredients</h4>
 			<p>No need to worry about harmful chemicals that harm your health.</p>
 		</div><!-- end benefit -->
 
 		<div class="span3 benefit">
-			<img src="css/images/product.png" alt="" />
+			<%= image_tag("product.png", alt:"nartual") %>
 			<h4>3-in-1 Product</h4>
 			<p>High performing 3-in-1 product effective against acne, eczema, and rosacea.</p>
 		</div><!-- end benefit -->
 
 		<div class="span3 benefit">
-			<img src="css/images/money.png" alt="" />
+			<%= image_tag("money.png", alt:"nartual") %>
 			<h4>Money Back Guarantee</h4>
 			<p>We offer 100% money back guarantee on all our products.</p>
 		</div><!-- end benefit -->
 
 		<div class="span3 benefit last">
-			<img src="css/images/shipping.png" alt="" />
+			<%= image_tag("shipping.png", alt:"nartual") %>
 			<h4>Free Shipping</h4>
 			<p>Never pay for shipping. Delivered directly to your door.</p>
 		</div><!-- end benefit -->

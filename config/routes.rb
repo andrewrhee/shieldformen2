@@ -1,13 +1,20 @@
 Shieldformen2::Application.routes.draw do
-  get "static_pages/home"
 
-  get "static_pages/works"
+  get "users/new"
 
-  get "static_pages/trial"
+  root to: 'static_pages#home'
 
-  get "static_pages/about"
+  %w[works trial about contact].each do |page|
+    get page, controller: "static_pages", action: page
+  end
 
-  get "static_pages/contact"
+  match '/signup', to: 'users#new'
+
+  # match '/works',   to: 'static_pages#works'
+  # match '/trial',   to: 'static_pages#trial'
+  # match '/about',   to: 'static_pages#about'
+  # match '/contact', to: 'static_pages#contact'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

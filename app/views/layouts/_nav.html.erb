@@ -1,0 +1,35 @@
+<div class="row"><!-- start nav -->
+	<div class="span12">
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	      	</a>
+	      	<div class="nav-collapse">
+	      		<ul class="nav">
+	      			<li><%= link_to "Home",          root_path %></li>
+	      			<li><%= link_to "Shop",          '#' %></li>
+	      			<li><%= link_to "How It Works",  works_path %></li>
+	      			<li><%= link_to "Free Trial",    trial_path %></li>
+	      			<li><%= link_to "Blog",          '#' %></li>
+	      			<li><%= link_to "About",         about_path %></li>
+	      		</ul>
+
+	      		<ul class="nav pull-right">
+	      			<li class="divider-vertical"></li>
+	      			<form class="navbar-search" action="">
+		      			<div class="controls">
+		      				<input type="text" class="span2" id="inputIcon" placeholder="Search">
+		      				<button class="btn btn-primary btn-small search_btn" type="submit">Go</button>
+	      				</div>
+	      			</form>
+	      		</ul>
+	      	</div><!-- end nav-collapse -->
+				</div><!-- end container -->
+			</div><!-- end navbar-inner -->
+		</nav><!-- end navbar -->
+	</div><!-- end span12 -->
+</div><!-- end nav -->

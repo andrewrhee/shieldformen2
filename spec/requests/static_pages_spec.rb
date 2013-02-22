@@ -1,65 +1,42 @@
 require 'spec_helper'
 
 describe "Static pages" do
+
+	subject { page }
 	
 	describe "Home page" do
-		it "should have the h3 'Benefits'" do
-			visit '/static_pages/home'
-			page.should have_selector('h3', text: 'Benefits')
-		end
+		before { visit root_path }
 
-		it "should have the title" do
-			visit '/static_pages/home'
-			page.should have_selector('title',
-												text: 'Home | Shield For Men')
-		end
+		it { should have_selector('h3', text: 'Benefits') }
+		it { should have_selector 'title',
+												text: full_title('Home') }
 	end
 
 	describe "Works page" do
-		it "should have the h1 'How It Works'" do
-			visit '/static_pages/works'
-			page.should have_selector('h1', text: 'How It Works')
-		end
+		before { visit works_path }
 
-		it "should have the title 'How It Works'" do
-			visit '/static_pages/works'
-			page.should have_selector('title', text: 'How It Works | Shield For Men')
-		end
+		it { should have_selector('h1', text: 'How It Works') }
+		it { should have_selector 'title', text: full_title('How It Works') }
 	end
 
 	describe "Trial page" do
-		it "should have the h1 'Trial'" do
-			visit '/static_pages/trial'
-			page.should have_selector('h1', text: 'Trial')
-		end
+		before { visit trial_path }
 
-		it "should have the title 'Trial'" do
-			visit '/static_pages/trial'
-			page.should have_selector('title', text: 'Trial | Shield For Men')
-		end
+		it { should have_selector('h1', text: 'Trial') }
+		it { should have_selector 'title', text: full_title('Trial') }
 	end
 
 	describe "About page" do
-		it "should have the h1 'About'" do
-			visit '/static_pages/about'
-			page.should have_selector('h1', text: 'About')
-		end
+		before { visit about_path }
 
-		it "should have the title 'About'" do
-			visit '/static_pages/about'
-			page.should have_selector('title', text: 'About Us | Shield For Men')
-		end
+		it { should have_selector('h1', text: 'About') }
+		it { should have_selector 'title', text: full_title('About Us') }
 	end
 
 	describe "Contact page" do
-		it "should have the h1 'Contact'" do
-			visit '/static_pages/contact'
-			page.should have_selector('h1', text: 'Contact')
-		end
+		before { visit contact_path }
 
-		it "should have the title 'Contact'" do
-			visit '/static_pages/contact'
-			page.should have_selector('title', text: 'Contact | Shield For Men')
-		end
+		it { should have_selector('h1', text: 'Contact') }
+		it { should have_selector 'title', text: full_title('Contact Us') }
 	end
 end
