@@ -1,14 +1,195 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) %> | Shield For Men</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grooming Products For Men | Shield For Men</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	
+  <link href="css/main.css" rel="stylesheet">
+	<!-- HTML5 shim for IE backwards compatibility -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
 
+<div class="header"><!-- start header -->
+	<div class="container">
+	<div class="header-inner">
+	<div class="row">
+		<div class="span4 logo">
+			<a href="#">
+				<h1>Shield For Men</h1>
+			</a>
+		</div><!-- end span4 -->
+
+		<div class="span8">
+			<div class="row">
+				<div class="span3 offset"></div>
+				<div class="span3 customer_service">
+					<h4>FREE delivery on ALL orders</h4>
+					<h4><small>Customer service: 877.569.1551</small></h4>
+				</div><!-- end span3 -->
+				<div class="span2 cart">
+					<h4><i class="icon-shopping-cart icon-white"></i> Shopping Cart</h4>
+					<p><a href="#">2 item(s) - $40.00</a></p>
+				</div><!-- end span2 -->
+			</div><!-- end row -->
+			<br/>
+			<div class="row">
+				<div class="links pull-right">
+					<a href="index.html">Home</a> |
+					<a href="account.html">My Account</a> |
+					<a href="cart.html">Shopping Cart</a> |
+					<a href="about.html">About</a> |
+					<a href="contact.html">Contact</a>
+				</div><!-- end links -->
+			</div><!-- end row -->
+		</div><!-- end span8 -->
+	</div><!-- end row -->
+	</div><!-- end header-inner -->
+	</div><!-- end container -->
+</div><!-- end header -->
+
+<div class="container">
+
+
+
+<div class="row"><!-- start nav -->
+	<div class="span12">
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	      	</a>
+	      	<div class="nav-collapse">
+	      		<ul class="nav">
+	      			<li><a href="index.html">Home</a></li>
+	      			
+	      			<li>
+	      				<a href="shop.html">Shop</a>
+	      			</li>
+	      			
+	      			<li><a href="#">How It Works</a></li>
+
+	      			<li><a href="#">Free Trial</a></li>
+
+	      			<li><a href="#">Blog</a></li>
+
+	      			<li><a href="about.html">About</a></li>
+
+	      		</ul>
+
+	      		<ul class="nav pull-right">
+	      			<li class="divider-vertical"></li>
+	      			<form class="navbar-search" action="">
+		      			<div class="controls">
+		      				<input type="text" class="span2" id="inputIcon" placeholder="Search">
+		      				<button class="btn btn-primary btn-small search_btn" type="submit">Go</button>
+	      				</div>
+	      			</form>
+	      		</ul>
+	      	</div><!-- end nav-collapse -->
+				</div><!-- end container -->
+			</div><!-- end navbar-inner -->
+		</nav><!-- end navbar -->
+	</div><!-- end span12 -->
+</div><!-- end nav -->
+
 <%= yield %>
 
+</div><!-- end container -->
+
+<footer>
+	<div class="footer">
+		<div class="container">
+			<div class="footer-inner">
+			<div class="row">
+			<div class="span2 menu">
+				<h4>Support</h4>
+				<ul>
+					<li><a href="#">FAQ</a> </li>
+					<li><a href="#">Contact Us</a> </li>
+					<li><a href="#">Vendor Inquiry</a> </li>
+				</ul>
+			</div><!-- end span2 -->
+			<div class="span2 menu">
+				<h4>Account</h4>
+				<ul>
+					<li><a href="#">Sign In</a> </li>
+					<li><a href="#">My Account</a> </li>
+					<li><a href="#">Order History</a> </li>
+					<li><a href="#">Newsletter</a> </li>
+				</ul>
+			</div><!-- end span2 -->
+			<div class="span2 menu">
+				<h4>About Us</h4>
+				<ul>
+					<li><a href="#">Blog</a> </li>
+					<li><a href="#">Who We Are</a> </li>
+					<li><a href="#">Our Values</a> </li>
+					<li><a href="#">Our Ingredients</a> </li>
+					<li><a href="#">Our Team</a> </li>
+					<li><a href="#">Jobs</a> </li>
+					<li><a href="#">Press</a> </li>
+				</ul>
+			</div><!-- end span2 -->
+			<div class="span2">
+				<h4>Information</h4>
+				<ul>
+					<li><a href="#">Delivery Information</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Terms & Conditions</a></li>
+				</ul>
+			</div><!-- end span2 -->
+			<div class="span3">
+			<div class="newsletter">
+				<h4>Newsletter</h4>
+				<form action="">
+					<div class="control-group">
+						<label class="control-label" for="inputIcon">Email address</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-envelope"></i></span>
+								<input class="span2" id="inputIcon" type="text">
+							</div>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-primary btn-small">
+				</form>
+			</div>
+			<div class="credit-cards">
+				<img src="css/images/credit-cards.png" alt="">
+			</div>
+			<div class="social-icons">
+				<h4>Follow Us</h4>
+				<ul>
+				<li><a href="http://www.facebook.com/shieldformen" target="_blank"><span class="facebook"></span></a></li>
+				<li><a href="https://twitter.com/#!/shieldformen/" target="_blank"><span class="twitter"></span></a></li>
+				<li><a href="http://www.flickr.com/photos/shieldformen/" target="_blank"><span class="flickr"></span></a></li>
+				<li><a href="http://www.youtube.com/shieldformenvideos/" target="_blank"><span class="youtube"></span></a></li>
+			</ul>
+			</div>
+			</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="copyright">
+					&copy; 2013 Shield For Men. All Rights Reserved.
+					</div>
+				</div>
+			</div>
+			</div><!-- end footer-inner -->
+		</div><!-- end container -->
+	</div><!-- end footer -->
+</footer>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
