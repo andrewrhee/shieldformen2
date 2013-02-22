@@ -1,2 +1,64 @@
-<h1>StaticPages#contact</h1>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<% provide(:title, 'Contact') %>
+
+<div class="row">
+<div class="span4">
+<ul class="breadcrumb">
+	<li>
+  <a href="#">Home</a> <span class="divider">/</span>
+  </li>
+  <li>
+  <a href="#">About Us</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+  <a href="#">Contact Us</a>
+  </li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="span3 left-nav">
+	<h2>About Us</h2>
+	<ul>
+		<li><a href="#">Who We Are</a></li>
+		<li><a href="#">Our Values</a></li>
+		<li><a href="#">Our Ingredients</a></li>
+		<li><a href="#">Our Team</a></li>
+		<li><a href="#">Jobs</a></li>
+		<li><a href="#">Press</a></li>
+		<li><a href="#">Contact Us</a></li>
+	</ul>
+</div><!-- end left-nav -->
+<div class="span9">
+		<div class="content">
+			<h1>Contact us</h1>
+			<form class="form-horizontal">
+        <fieldset>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non egestas massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus auctor, urna a pretium aliquam, enim tellus convallis dolor, eget semper sem risus placerat tortor.</p><br />
+          <div class="control-group">
+            <label for="focusedInput" class="control-label">First Name:</label>
+            <div class="controls">
+              <input type="text" placeholder="your first name" id="focusedInput" class="input-xlarge focused span5">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">E-Mail Address:</label>
+            <div class="controls">
+              <input type="text" placeholder="your email" class="input-xlarge span5">
+            </div>
+          </div>
+		  <div class="control-group">
+            <label for="textarea" class="control-label">Enquiry:</label>
+            <div class="controls">
+              <textarea rows="3" id="textarea"  placeholder="What would you like to contact us about?" class="input-xlarge span5"></textarea>
+            </div>
+          </div>
+
+          <div class="span8">
+				<button class="btn btn-primary pull-right" style="margin-right: 20px;" type="submit">Continue</button>
+          </div>
+        </fieldset>
+      </form>
+		</div>
+	</div>
+</div>
