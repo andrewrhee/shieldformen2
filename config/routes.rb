@@ -1,15 +1,17 @@
 Shieldformen2::Application.routes.draw do
   resources :users
-
-  get "users/new"
+  resources :sessions,   only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
+  
   %w[works trial about contact].each do |page|
     get page, controller: "static_pages", action: page
   end
-
-  match '/signup', to: 'users#new'
 
   # match '/works',   to: 'static_pages#works'
   # match '/trial',   to: 'static_pages#trial'
