@@ -1,4 +1,7 @@
 Shieldformen2::Application.routes.draw do
+  resources :products
+
+
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
 
