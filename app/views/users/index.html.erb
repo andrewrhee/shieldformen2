@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<%= provide(:title, 'All users') %>
 <div class="row">
 	<aside class="span3">
 		<section>
@@ -9,7 +9,7 @@
 			
 			<ul>
 				<li><%= link_to 'All Users', users_path %></li>
-				<li><%= link_to "Account Info", edit_user_path(@user) %></li>
+				<li><%= link_to "Account Info", edit_user_path(current_user) %></li>
 				<li><a href="#">Your Orders</a></li>
 				<li><a href="#">Credits</a></li>
 			</ul>
@@ -17,10 +17,15 @@
 	</aside>
 	<div class="span9">
 		<div class="content">
-		<h1>
-			<%= gravatar_for @user %>
-			<%= @user.name %>
-		</h1>
+			<h1>All users</h1>
+
+			<%= will_paginate %>
+
+			<ul class="users">
+				<%= render @users %>
+			</ul>
+
+			<%= will_paginate %>
 		</div>
 	</div>
 </div>
