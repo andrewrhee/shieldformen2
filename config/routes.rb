@@ -1,4 +1,5 @@
 Shieldformen2::Application.routes.draw do
+
   resources :products
 
 
@@ -10,6 +11,7 @@ Shieldformen2::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/store',   to: 'store#index'
 
   
   %w[works trial about contact].each do |page|
