@@ -1,43 +1,127 @@
 <%= provide(:title, 'Showing product') %>
 <div class="row">
-  <aside class="span3">
-    <section>
-      
-    </section>
-    <%= render 'left-nav' %>
-  </aside>
-  <div class="span9">
-    <div class="content products">
-    	<h1>Showing product</h1>
-			<p id="notice"><%= notice %></p>
-
-			<p>
-				<%= image_tag(@product.image_url) %>
-			</p>
-			
-			<p>
-			  <b>Title:</b>
-			  <%= @product.title %>
-			</p>
-
-			<p>
-			  <b>Description:</b>
-			  <%= @product.description %>
-			</p>
-
-			<p>
-			  <b>Image url:</b>
-			  <%= @product.image_url %>
-			</p>
-
-			<p>
-			  <b>Price:</b>
-			  <%= @product.price %>
-			</p>
-
-
-			<%= link_to 'Edit', edit_product_path(@product) %> |
-			<%= link_to 'Back', products_path %>
-		</div>
-  </div>
+<div class="span4">
+<ul class="breadcrumb">
+	<li>
+  <a href="#">Home</a> <span class="divider">/</span>
+  </li>
+  <li>
+  <a href="#">Shop</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+  <a href="#">Acne Buster - Treatment Lotion</a>
+  </li>
+</ul>
 </div>
+</div>
+
+<div class="row">
+<div class="span12 product-detail">
+	<div class="span1">
+	<div class="thumbnails">
+		<%= image_tag(@product.image_url) %>
+	</div><!-- end thumbnails -->
+	</div><!--  end span1 --> 
+	<div class="span4">
+	<div class="product-image">
+		<%= image_tag(@product.image_url) %>
+	</div><!-- end product-image -->
+	</div><!-- end span4 -->
+	<div class="span6">
+	<div class="product-detail-box">
+		<div class="product-title">
+		<h3>Acne Buster - Treatment Lotion</h3>
+		</div><!-- end product-title -->
+
+		<div class="description">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		</div>
+		
+		<div class="product-price">
+		<p><strong><%= number_to_currency(@product.price) %></strong></p>
+		</div><!-- end product-price -->
+
+		<div class="availability">
+			<p><strong>Availability:</strong> In Stock</p>
+		</div><!-- end availability -->
+
+		
+		<div class="add-cart no_margin_left">
+			<form class="form-inline">
+			<label>Qty:</label>
+			<input type="text" class="span1" placeholder="1">
+			<button class="btn btn-primary" type="submit">Add to cart</button>
+			</form>
+		</div><!-- end add-cart -->
+
+		<div class="rating-system">
+			<p>
+				<input name="star1" type="radio" class="star"/>
+				<input name="star1" type="radio" class="star"/>
+				<input name="star1" type="radio" class="star"/>
+				<input name="star1" type="radio" class="star"/>
+				<input name="star1" type="radio" class="star"/>&nbsp;&nbsp;
+							
+				<a href="#">0 reviews</a>  |  <a href="#">Write a review</a>
+			</p>
+		</div><!-- end rating-system -->
+	</div><!-- end product-detail-box -->
+	</div><!-- end span6 -->
+</div><!-- end span12 -->
+</div><!-- end row -->
+
+<div class="row">
+<div class="span12">
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#1" data-toggle="tab">Description</a></li>
+		<li><a href="#2" data-toggle="tab">Ingredients</a></li>
+		<li><a href="#3" data-toggle="tab">Reviews</a></li>
+	</ul>
+	<div class="tab-content">
+    <div class="tab-pane active" id="1">
+    	<%= @product.description %>
+    </div>
+
+    <div class="tab-pane" id="2">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+    </div>
+
+    <div class="tab-pane" id="3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+    </div>
+  </div><!-- end tab-content -->
+</div><!-- end tabbable -->
+</div><!-- end span12 -->
+</div><!-- end row -->

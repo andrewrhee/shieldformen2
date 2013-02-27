@@ -1,3 +1,77 @@
 <%= provide(:title, 'Store') %>
-<h1>Store</h1>
-<p>Find me in app/views/store/index.html.erb</p>
+<div class="row">
+<div class="span4">
+<ul class="breadcrumb">
+	<li>
+  <a href="#">Home</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+  <a href="#">Store</a>
+  </li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="span3 left-nav">
+	<h2>Store</h2>
+	<ul>
+		<li><a href="product.html">Acne Buster</a></li>
+		<li><a href="#">Eczema Guard</a></li>
+		<li><a href="#">Oil Zapper</a></li>
+		<li><a href="#">Razor Bump Eliminator</a></li>
+	</ul>
+</div><!-- end left-nav -->
+<div class="span9 carousel-container no-margin"><!-- start Carousel -->
+	<div id="myCarousel" class="carousel slide">
+		<div class="carousel-inner">
+			<div class="item active">
+				<%= link_to image_tag("slide1.png", alt: "Slide1"), "#" %>
+				<div class="carousel-caption">
+					<h4>First Thumbnail Label</h4>
+					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div><!-- end carousel-caption -->
+			</div><!-- end item -->
+
+			<div class="item">
+				<%= link_to image_tag("slide2.png", alt: "Slide2"), "#" %>
+				<div class="carousel-caption">
+					<h4>Second Thumbnail Label</h4>
+					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div><!-- end carousel-caption -->
+			</div><!-- end item -->
+
+			
+		</div><!-- end carousel-inner -->
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div><!-- end myCarousel -->
+</div><!-- end Carousel -->
+</div>
+
+<div class="row">
+	<div class="span3"></div>
+	<div class="span9">
+		<h1>Store</h1>
+		<div class="products">
+		<% @products.each do |product| %>
+		<div class="span3 product">
+			<div class="product-image">
+				<%= link_to image_tag(product.image_url), product_path(product) %>
+			</div>
+			<div class="product-title">
+				<%= link_to content_tag(:h3, product.title), product_path(product) %>
+			</div>
+			<div class="price">
+				<%= number_to_currency(product.price) %>
+			</div>
+			<div class="add-cart">
+				<input type="submit" class="btn btn-primary btn-small">
+			</div>
+		</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+
+
