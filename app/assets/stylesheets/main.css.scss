@@ -684,6 +684,8 @@ input {
 	}
 }
 
+
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
 
@@ -759,9 +761,14 @@ input {
 		margin-right: 0;
 	}
 
-	.product-detail-box .form-inline button {
-		margin-top: 10px;
+	.product-detail-box .quantity {
+		display: inline;
 	}
+
+	.product-detail-box .button {
+		float: left;
+	}
+
 
 	.product-detail .thumbnails {
 		min-height: 100px;

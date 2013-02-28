@@ -50,11 +50,14 @@
 
 		
 		<div class="add-cart no_margin_left">
-			<form class="form-inline">
-			<label>Qty:</label>
-			<input type="text" class="span1" placeholder="1">
-			<button class="btn btn-primary" type="submit">Add to cart</button>
-			</form>
+			<div class="quantity">
+				<label>Qty:</label>
+				<input type="text" class="span1" placeholder="1">
+			</div>
+			
+			<div class="button">
+				<%= button_to 'Add to cart', line_items_path(product_id: @product), class: "btn btn-primary"  %>
+			</div>
 		</div><!-- end add-cart -->
 
 		<div class="rating-system">
