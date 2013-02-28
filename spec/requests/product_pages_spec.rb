@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe "Product pages" do
 
-	
-
   subject { page }
 
   describe "index page" do
