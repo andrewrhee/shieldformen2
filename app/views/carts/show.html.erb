@@ -26,29 +26,24 @@
   </tr>
 </thead>
 <tbody>
+
   <tr>
+  <% @cart.line_items.each do |item| %>
 	<td class=""><input type="checkbox" value="option1" id="optionsCheckbox"></td>
-	<td class="muted center_text"><a href="product.html"><img src="css/images/cart-image.png"></a></td>
-	<td>Acne Buster - Treatment Lotion</td>
-	<td><input type="text" placeholder="1" class="input-mini"></td>
-	<td>$29.00</td>
-	<td>$29.00</td>
-  </tr>			  
-  <tr>
-	<td class=""><input type="checkbox" value="option1" id="optionsCheckbox"></td>
-	<td class="muted center_text"><a href="product.html"><img src="css/images/cart-image.png"></a></td>
-	<td>Acne Buster - Treatment Cleanser</td>
-	<td><input type="text" placeholder="1" class="input-mini"></td>
-	<td>$19.00</td>
-	<td>$19.00</td>
-  </tr>				 
+	<td class="muted center_text"><%= image_tag(item.product.image_url, class: "cart-image") %></td>
+	<td><%= item.product.title %></td>
+	<td><input type="text" placeholder="1" value="<%= item.quantity %>" class="input-mini"></td>
+	<td><%= number_to_currency(item.product.price) %></td>
+	<td><%= number_to_currency(item.total_price) %></td>
+  </tr>
+  <% end %>		  
   <tr>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
-	<td><strong>$48.00</strong></td>
+	<td><strong><%= number_to_currency(@cart.total_price) %></strong></td>
   </tr>		  
 </tbody>
 </table>
@@ -103,7 +98,7 @@
       <button class="btn btn-primary" type="submit">Update</button>
 </div>		  
 <div class="span2">
-      <button class="btn btn-primary" type="submit">Continue shopping</button>
+    <%= link_to "Continue shopping", store_url, class: "btn btn-primary" %>
 </div>		  
 <div class="span5">
       <a href="checkout.html" class="btn btn-primary pull-right">Checkout</a>
