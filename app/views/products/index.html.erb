@@ -10,6 +10,8 @@
     <div class="content products">
       <h1>All products</h1>
 
+      <%= will_paginate %>
+
       <table>
       <% @products.each do |product| %>
         <tr>
@@ -33,6 +35,8 @@
         </tr>
       <% end %>
       </table>
+
+      <%= will_paginate %>
 
       <br />
 

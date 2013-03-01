@@ -1,3 +1,4 @@
+<%= provide(:title, 'Shopping Cart') %>
 <div class="row">
 <div class="span4">
 <ul class="breadcrumb">
@@ -97,11 +98,11 @@
 <div class="span5">
       <button class="btn btn-primary" type="submit">Update</button>
 </div>		  
-<div class="span2">
-    <%= link_to "Continue shopping", store_url, class: "btn btn-primary" %>
-</div>		  
 <div class="span5">
-      <a href="checkout.html" class="btn btn-primary pull-right">Checkout</a>
+    <%= button_to "Continue shopping", store_url, class: "btn btn-primary" %>
+</div>		  
+<div class="span2">
+    <%= button_to "Checkout", new_order_path, method: :get, class: "btn btn-primary" %>
 </div>
 </div>
   </fieldset>

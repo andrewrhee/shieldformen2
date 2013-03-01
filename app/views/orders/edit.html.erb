@@ -1,0 +1,20 @@
+<%= provide(:title, 'Editing orders') %>
+<div class="row">
+    <aside class="span3">
+        <section>
+            
+        </section>
+        <%= render 'products/left-nav' %>
+    </aside>
+    <div class="span9">
+        <div class="content">
+
+				<h1>Editing order</h1>
+
+				<%= render 'form' %>
+
+				<%= link_to 'Show', @order %> |
+				<%= link_to 'Back', orders_path %>
+ 				</div>
+    </div>
+</div>

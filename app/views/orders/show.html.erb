@@ -1,0 +1,107 @@
+<%= provide(:title, 'Showing orders') %>
+<div class="row">
+    <aside class="span3">
+        <section>
+            
+        </section>
+        <%= render 'products/left-nav' %>
+    </aside>
+    <div class="span9">
+        <div class="content">
+
+        <p>
+          <b>Email:</b>
+          <%= @order.email %>
+        </p>
+
+        <p>
+          <b>Phone number:</b>
+          <%= @order.phone_number %>
+        </p>
+
+        <p>
+          <b>Bill to first name:</b>
+          <%= @order.bill_to_first_name %>
+        </p>
+
+        <p>
+          <b>Bill to last name:</b>
+          <%= @order.bill_to_last_name %>
+        </p>
+
+        <p>
+          <b>Bill to address:</b>
+          <%= @order.bill_to_address %>
+        </p>
+
+        <p>
+          <b>Bill to city:</b>
+          <%= @order.bill_to_city %>
+        </p>
+
+        <p>
+          <b>Bill to state:</b>
+          <%= @order.bill_to_state %>
+        </p>
+
+        <p>
+          <b>Bill to postal code:</b>
+          <%= @order.bill_to_postal_code %>
+        </p>
+
+        <p>
+          <b>Ship to first name:</b>
+          <%= @order.ship_to_first_name %>
+        </p>
+
+        <p>
+          <b>Ship to last name:</b>
+          <%= @order.ship_to_last_name %>
+        </p>
+
+        <p>
+          <b>Ship to address:</b>
+          <%= @order.ship_to_address %>
+        </p>
+
+        <p>
+          <b>Ship to city:</b>
+          <%= @order.ship_to_city %>
+        </p>
+
+        <p>
+          <b>Ship to state:</b>
+          <%= @order.ship_to_state %>
+        </p>
+
+        <p>
+          <b>Ship to postal code:</b>
+          <%= @order.ship_to_postal_code %>
+        </p>
+
+        <p>
+          <b>Customer ip:</b>
+          <%= @order.customer_ip %>
+        </p>
+
+        <p>
+          <b>Status:</b>
+          <%= @order.status %>
+        </p>
+
+        <p>
+          <b>Error message:</b>
+          <%= @order.error_message %>
+        </p>
+
+        <p>
+          <b>Price:</b>
+          <%= @order.price %>
+        </p>
+
+
+        <%= link_to 'Edit', edit_order_path(@order) %> |
+        <%= link_to 'Back', orders_path %>
+        </div>
+    </div>
+</div>
