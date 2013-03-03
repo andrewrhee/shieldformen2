@@ -4,11 +4,11 @@
         <section>
             
         </section>
-        <%= render 'products/left-nav' %>
+        <%= render 'shared/left-nav' %>
     </aside>
     <div class="span9">
         <div class="content">
-
+        <h3>Personal Info:</h3>
         <p>
           <b>Email:</b>
           <%= @order.email %>
@@ -18,7 +18,7 @@
           <b>Phone number:</b>
           <%= @order.phone_number %>
         </p>
-
+        <h3>Billing Info:</h3>
         <p>
           <b>Bill to first name:</b>
           <%= @order.bill_to_first_name %>
@@ -48,7 +48,7 @@
           <b>Bill to postal code:</b>
           <%= @order.bill_to_postal_code %>
         </p>
-
+        <h3>Shipping Info:</h3>
         <p>
           <b>Ship to first name:</b>
           <%= @order.ship_to_first_name %>
@@ -99,9 +99,6 @@
           <%= @order.price %>
         </p>
 
-
-        <%= link_to 'Edit', edit_order_path(@order) %> |
-        <%= link_to 'Back', orders_path %>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
 		<section>
 			
 		</section>
-		<%= render 'left-nav' %>
+		<%= render 'shared/left-nav' %>
 	</aside>
 	<div class="span9">
 		<div class="content">
@@ -21,6 +21,19 @@
 			<p>
 				<%= link_to 'Edit Personal Info', edit_user_path(@user) %>
 			</p>
+			<% if @user.orders.any? %>
+				<h3>Your Orders</h3>
+				<% @user.orders.each do |order| %>
+				<ol>
+					<li>
+					<span><%= link_to "SFM1201#{order.id}", order_path(order.id) %></span>
+					<span class="timestamp">
+						Ordered <%= time_ago_in_words(order.created_at) %> ago.
+					</span>
+					</li>
+				</ol>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>

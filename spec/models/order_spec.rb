@@ -21,7 +21,8 @@ describe Order do
       customer_ip: "123.123.123.123",
       status: "success",
       error_message: "nil",
-      price: "9.99")
+      price: "9.99",
+      plan_id: "1")
   end
 
   subject { @order }
@@ -44,6 +45,7 @@ describe Order do
   it { should respond_to(:status) }
   it { should respond_to(:error_message) }
   it { should respond_to(:price) }
+  it { should respond_to(:plan_id) }
 
   it { should be_valid }
 

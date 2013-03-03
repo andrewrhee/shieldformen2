@@ -20,144 +20,108 @@
 	<h1>Checkout</h1>
 	<%= form_for(@order) do |f| %>
 	<%= render 'shared/error_messages', object: @order %>
+	<div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
 	<div class="accordion" id="accordion2">
 		
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="accordion2" href="#collapseOne">
-					<h3>Step 1: Checkout Options</h3>
-				</a>
-			</div><!-- end accordion-heading -->
-			<div id="collapseOne" class="accordion-body collapse in">
-				<div class="accordion-inner">
-					<div class="span6 no_margin_left">
-						<h4>New Customer</h4>
-						<p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-
-						<form class="">
-							<fieldset>
-								<input type="radio" value="option1" name="optionsCheckboxList1"> Register Account <br />
-								<input type="radio" value="option2" name="optionsCheckboxList1"> Guest Checkout <br /><br /><br /><br /><br />
-								<%= link_to "Continue", '#collapse2', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %>
-							</fieldset>
-						</form>
-					</div><!-- end span6 -->
-					<div class="span5">
-						<h4>Registered Customers</h4>
-						<p>If you have an account with us, please log in.</p>
-
-						<form class="">
-					<fieldset>
-
-						<div class="control-group">
-							<label for="focusedInput" class="control-label">Username</label>
-							<div class="controls">
-							<input type="text" placeholder="Enter your username" id="username" class="input-xlarge focused">
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label class="control-label">Password</label>
-							<div class="controls">
-							<input type="password" placeholder="Enter your password" id="password" class="input-xlarge">
-							</div>
-						</div>
-						<%= link_to "Continue", '#collapse2', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %>
-
-					</fieldset>
-				</form>
-					</div><!-- end span5 -->
-				</div><!-- end accordion-inner -->
-			</div><!-- end collapseOne -->
 		
-		</div><!-- end accordion-group -->
 		<div class="accordion-group">
 			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
-					<h3>Step 2: Billing Details</h3>
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
+					<h3>Step 1: Billing Details</h3>
 				</a>
 			</div><!-- end accordion-heading -->
-			<div id="collapse2" class="accordion-body collapse">
+			<div id="collapse1" class="accordion-body collapse in">
 				<div class="accordion-inner">
+
+					<div id="billing_fields">
 					<div class="span6 no_margin_left">
 						
-						<legend>Your Personal Details</legend>
-						
-					  <div class="control-group">
-					  <%= f.label :bill_to_first_name, '* First Name:' %>
-					  <div class="controls docs-input-sizes">
-					  	<%= f.text_field :bill_to_first_name, class: "span4" %>
-					  </div>
-					  </div>
+					<legend>Your Billing Details</legend>
+					
 
-					  <div class="control-group">
-					  <%= f.label :bill_to_last_name, '* Last Name:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :bill_to_last_name, class: "span4" %>
-						</div>
-					  </div>			
+					<div class="control-group">
+					<%= f.label :bill_to_first_name, '* First Name:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :bill_to_first_name, class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :email, '* Email:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :email, class: "span4" %>
-						</div>
-					  </div>					 
+					<div class="control-group">
+					<%= f.label :bill_to_last_name, '* Last Name:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :bill_to_last_name, class: "span4" %>
+					</div>
+					</div>			
 
-					  <div class="control-group">
-					  <%= f.label :phone_number, '*Phone:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :phone_number, class: "span4" %>
-						</div>
-					  </div>
+					<div class="control-group">
+					<%= f.label :email, '* Email:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :email, class: "span4" %>
+					</div>
+					</div>					 
+
+					<div class="control-group">
+					<%= f.label :phone_number, '*Phone:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :phone_number, class: "span4" %>
+					</div>
+					</div>
 					</div><!-- end span6 -->
 					<div class="span5">
-						<legend>Your Address </legend>
+					<legend>Your Address </legend>
 
-					  <div class="control-group">
-					  <%= f.label :bill_to_address, '* Address:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :bill_to_address, class: "span4" %>
-						</div>
-					  </div>					  
+					<div class="control-group">
+					<%= f.label :bill_to_address, '* Address:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :bill_to_address, class: "span4" %>
+					</div>
+					</div>					  
 
-					  <div class="control-group">
-					  <%= f.label :bill_to_city, '* City:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :bill_to_city, class: "span4" %>
-						</div>
-					  </div>
+					<div class="control-group">
+					<%= f.label :bill_to_city, '* City:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :bill_to_city, class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :bill_to_state, '* State:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.select :bill_to_state, Order::STATES,
-															 { prompt: 'Select a state' },
-															 class: "span4" %>
-						</div>
-					  </div>
+					<div class="control-group">
+					<%= f.label :bill_to_state, '* State:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.select :bill_to_state, Order::STATES,
+														 { prompt: 'Select a state' },
+														 class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :bill_to_postal_code, '* Zip Code:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :bill_to_postal_code, class: "span4" %>
-						</div>
-					  </div>					  
+					<div class="control-group">
+					<%= f.label :bill_to_postal_code, '* Zip Code:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :bill_to_postal_code, class: "span4" %>
+					</div>
+					</div>					  
 
-					  <div class="control-group">
-						<label class="control-label">Country</label>
-						<div class="controls docs-input-sizes">
-							<select  class="span4">
-							<option>United Kingdom</option>
-							<option>United States</option>
-							</select>
-						</div>
-					  </div>
-					 </div><!-- end span5 -->
+					<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls docs-input-sizes">
+						<select  class="span4">
+						<option>United States</option>
+						</select>
+					</div>
+					</div>
 
-				  <div class="span11 no_margin_left">
-				  <br/><%= link_to "Continue", '#collapse3', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %><br /><br /><br />
-				  </div><!-- end span11 -->
+
+					<input type="checkbox" id="copyaddress">
+
+					<em>Check this box if Billing Address and Shipping Address are the same.</em>
+					
+					</div><!-- end span5 -->
+					</div><!-- end billing_fields -->
+
+					<div class="span11 no_margin_left">
+					<br/><%= link_to "Continue", '#collapse2', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %><br /><br /><br />
+					</div><!-- end span11 -->
 
 				</div><!-- end accordion-inner -->
 			</div><!-- end collapse2 -->
@@ -165,106 +129,145 @@
 
 		<div class="accordion-group">
 			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-					<h3>Step 3: Delivery Details</h3>
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+					<h3>Step 2: Delivery Details</h3>
 				</a>
 			</div><!-- end accordion-heading -->
-			<div id="collapse3" class="accordion-body collapse">
+			<div id="collapse2" class="accordion-body collapse">
 				<div class="accordion-inner">
+					<div id="shipping_fields">
 					<div class="span6 no_margin_left">
-						<legend>Your Personal Details</legend>
+					<legend>Your Shipping Details</legend>
 
-					  <div class="control-group">
-					  <%= f.label :ship_to_first_name, '* First Name:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :ship_to_first_name, class: "span4" %>
-						</div>
-					  </div>
 
-					  <div class="control-group">
-					  	<%= f.label :ship_to_last_name, '* Last Name:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :ship_to_last_name, class: "span4" %>
-						</div>
-					  </div>		 
+					<div class="control-group">
+					<%= f.label :ship_to_first_name, '* First Name:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :ship_to_first_name, class: "span4" %>
+					</div>
+					</div>
 
-					  
+					<div class="control-group">
+						<%= f.label :ship_to_last_name, '* Last Name:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :ship_to_last_name, class: "span4" %>
+					</div>
+					</div>
+
+					<div class="control-group">
+					<%= f.label :email, '* Email:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :email, class: "span4" %>
+					</div>
+					</div>					 
+
+					<div class="control-group">
+					<%= f.label :phone_number, '*Phone:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :phone_number, class: "span4" %>
+					</div>
+					</div>
+
+
 					</div><!-- end span6 -->
 					<div class="span5">
-						<legend>Your Address </legend>
-					  <div class="control-group">
-					  <%= f.label :ship_to_address, '* Address 1:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :ship_to_address, class: "span4" %>
-						</div>
-					  </div>
+					<legend>Your Address </legend>
+					<div class="control-group">
+					<%= f.label :ship_to_address, '* Address 1:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :ship_to_address, class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :ship_to_city, '* City:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :ship_to_city, class: "span4" %>
-						</div>
-					  </div>
+					<div class="control-group">
+					<%= f.label :ship_to_city, '* City:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :ship_to_city, class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :ship_to_state, '* State:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.select :ship_to_state, Order::STATES,
-													 { prompt: 'Select a state' },	
-													 class: "span4" %>
-						</div>
-					  </div>
+					<div class="control-group">
+					<%= f.label :ship_to_state, '* State:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.select :ship_to_state, Order::STATES,
+												 { prompt: 'Select a state' },	
+												 class: "span4" %>
+					</div>
+					</div>
 
-					  <div class="control-group">
-					  <%= f.label :ship_to_postal_code, '* Zip Code:' %>
-						<div class="controls docs-input-sizes">
-							<%= f.text_field :ship_to_postal_code, class: "span4" %>
-						</div>
-					  </div>					  
+					<div class="control-group">
+					<%= f.label :ship_to_postal_code, '* Zip Code:', class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= f.text_field :ship_to_postal_code, class: "span4" %>
+					</div>
+					</div>					  
 
-					  <div class="control-group">
-						<label class="control-label">Country</label>
-						<div class="controls docs-input-sizes">
-							<select  class="span4">
-							<option>United Kingdom</option>
-							<option>United States</option>
-							</select>
-						</div>
-					  </div>
+					<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls docs-input-sizes">
+						<select  class="span4">
+						<option>United States</option>
+						</select>
+					</div>
+					</div>
 
+					</div><!-- end shipping_fields -->
 					</div><!-- end span5 -->
 
 					<div class="span11 no_margin_left">
-						<br/><%= link_to "Continue", '#collapse4', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %><br /><br /><br />
+					<br/><%= link_to "Continue", '#collapse3', data: { toggle: "collapse" }, class: "btn btn-primary pull-right" %><br /><br /><br />
 					</div>
+
 				</div><!-- end accordion-inner -->
 			</div><!-- end collapse3 -->
 		</div><!-- end accordion-group -->
 
 		<div class="accordion-group">
 			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
-					<h3>Step 4: Payment Method</h3>
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+					<h3>Step 3: Payment Method</h3>
 				</a>
 			</div><!-- end accordion-heading -->
 
-			<div id="collapse4" class="accordion-body collapse">
+			<div id="collapse3" class="accordion-body collapse">
 				<div class="accordion-inner">
-					<input type="radio" value="option1" name="payment1"> Collect in store<br />
-					<input type="radio" value="option2" name="payment1"> Paypal<br />
-					<input type="radio" value="option2" name="payment1"> Google checkout<br /><br />
+					
+					<%= f.hidden_field :plan_id, :value => "1"  %>
+					<%= f.hidden_field :stripe_card_token %>
 
 					<div class="control-group">
-          	<label for="textarea" class="control-label">Comments</label>
-          	<div class="controls">
-              <textarea rows="3" id="textarea" class="input-xlarge span11"></textarea>
-            </div>
-           </div>
+					<%= label_tag :card_number, "Credit Card Number", class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= text_field_tag :card_number, nil, name: nil, class: "span4" %>
+					</div>
+					</div>
 
-           <div class="span11 no_margin_left">
-           	<%= f.submit "Confirm order", class: "btn btn-primary pull-right" %>
-           	<br/></br/>
-					  </div>
+					<div class="control-group">
+					<%= label_tag :card_code, "Security Code on Card (CVV)", class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<%= text_field_tag :card_code, nil, name: nil, class: "span4" %>
+					</div>
+					</div>
+
+					<div class="control-group">
+					<%= label_tag :card_month, "Card Expiration", class: "control-label" %>
+					<div class="controls docs-input-sizes">
+						<div class="span2 no_margin_left">
+						<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+						</div>
+						<div class="span2">
+						<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+						</div>
+					</div>
+					</div>
+
+					 
+
+					<div class="span11 no_margin_left">
+						<%= f.submit "Confirm order", class: "btn btn-primary pull-right" %>
+					 	<br/></br/>
+					</div>
+
 				</div><!-- end accordion-inner -->
 			</div><!-- end collapse4 -->
 		</div><!-- end accordion-group -->
@@ -272,3 +275,46 @@
 	</div><!-- end accordion -->
 </div><!-- end span12 -->
 </div><!-- end row -->
+<script type="text/javascript">
+
+	// on page load
+	$(document).ready(function() {
+		// copy billing to shipping
+    $('input#copyaddress').click(function() {
+
+        // If checked
+        if ($(this).is(":checked")) {
+
+            //for each input field
+            $('#shipping_fields input', ':visible', document.body).each(function(i) {
+
+                //copy the values from the shipping inputs
+                //to the equiv inputs on the billing inputs
+                $(this).val($("#billing_fields input").eq(i).val());
+            });
+
+            //won't work on drop downs, so get those values
+            var ship_to_state = $("select#order_bill_to_state").val();
+
+            // special for the select
+            $('select#order_ship_to_state option[value=' + ship_to_state + ']').attr('selected', 'selected');
+
+        }
+        else {
+
+            //for each input field
+            $('shipping_fields input', ':visible', document.body).each(function(i) {
+
+                // put default values back
+                $(this).val($(this)[0].defaultValue);
+            });
+
+            // special for the select
+            $('select#ship_to_state option[value=""]').attr('selected', 'selected');
+
+        } // end if else
+
+    }); // end copy bill to ship function
+	});
+
+	</script>

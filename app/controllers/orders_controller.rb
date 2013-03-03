@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :new, :edit, :update]
   # GET /orders
   # GET /orders.json
   def index
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
+    @user = current_user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @order }
@@ -47,16 +48,19 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
+    @user = current_user
+    @order.user_id = @user.id
     @order.customer_ip = request.remote_ip
     @order.add_line_items_from_cart(current_cart)
 
     respond_to do |format|
-      if @order.save
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-        format.html { redirect_to store_url, 
-          notice: 'Thank you for your order.' }
-        format.json { render json: @order, status: :created, location: @order }
+      if @order.save && @order.save_with_payment
+          
+          Cart.destroy(session[:cart_id])
+          session[:cart_id] = nil
+          format.html { redirect_to store_url, 
+            notice: 'Thank you for your order.' }
+          format.json { render json: @order, status: :created, location: @order }
       else
         @cart = current_cart
         format.html { render action: "new" }

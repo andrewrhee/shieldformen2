@@ -29,15 +29,8 @@
 <tbody>
 
   <tr>
-  <% @cart.line_items.each do |item| %>
-	<td class=""><input type="checkbox" value="option1" id="optionsCheckbox"></td>
-	<td class="muted center_text"><%= image_tag(item.product.image_url, class: "cart-image") %></td>
-	<td><%= item.product.title %></td>
-	<td><input type="text" placeholder="1" value="<%= item.quantity %>" class="input-mini"></td>
-	<td><%= number_to_currency(item.product.price) %></td>
-	<td><%= number_to_currency(item.total_price) %></td>
+  <%= render(@cart.line_items) %>  
   </tr>
-  <% end %>		  
   <tr>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>

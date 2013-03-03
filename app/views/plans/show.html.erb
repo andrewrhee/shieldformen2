@@ -1,0 +1,26 @@
+<%= provide(:title, 'New plans') %>
+<div class="row">
+  <aside class="span3">
+    <section>
+      
+    </section>
+    <%= render 'shared/admin-left-nav' %>
+  </aside>
+  <div class="span9">
+    <div class="content products">
+		<p>
+		  <b>Name:</b>
+		  <%= @plan.name %>
+		</p>
+
+		<p>
+		  <b>Price:</b>
+		  <%= @plan.price %>
+		</p>
+
+
+		<%= link_to 'Edit', edit_plan_path(@plan) %> |
+		<%= link_to 'Back', plans_path %>
+		</div>
+  </div>
+</div>

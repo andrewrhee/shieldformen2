@@ -48,4 +48,12 @@ module SessionsHelper
 	def admin_user
     redirect_to(root_path) unless current_user.admin?
   end
+
+  def quantity
+  	current_cart.quantity
+  end
+
+  def total_price
+  	current_cart.total_price
+  end
 end

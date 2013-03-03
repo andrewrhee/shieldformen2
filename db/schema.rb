@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228204659) do
+ActiveRecord::Schema.define(:version => 20130302091830) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -46,8 +46,20 @@ ActiveRecord::Schema.define(:version => 20130228204659) do
     t.string   "status"
     t.string   "error_message"
     t.decimal  "price"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "stripe_customer_token"
+    t.integer  "plan_id"
+    t.integer  "user_id"
+  end
+
+  add_index "orders", ["user_id", "created_at"], :name => "index_orders_on_user_id_and_created_at"
+
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
