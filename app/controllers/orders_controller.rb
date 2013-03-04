@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
     @user = current_user
     @order.user_id = @user.id
     @order.customer_ip = request.remote_ip
+    @order.price = total_price
     @order.add_line_items_from_cart(current_cart)
 
     respond_to do |format|

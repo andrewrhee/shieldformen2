@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 
 	has_many :products
-	has_many :orders
+	has_many :orders, dependent: :destroy
 
 
 	private

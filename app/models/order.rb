@@ -19,16 +19,16 @@ class Order < ActiveRecord::Base
   belongs_to :users
   belongs_to :sessions
   has_many :line_items, dependent: :destroy
+  has_many :products, through: :line_items
 
   accepts_nested_attributes_for :users
-  accepts_nested_attributes_for :sessions
 
   attr_accessible :bill_to_address, :bill_to_city, :bill_to_first_name, 
   	:bill_to_last_name, :bill_to_postal_code, :bill_to_state, 
   	:customer_ip, :email, :error_message, :phone_number, :price, 
   	:ship_to_address, :ship_to_city, :ship_to_first_name, :ship_to_last_name, 
   	:ship_to_postal_code, :ship_to_state, :status, :stripe_card_token, :plan_id,
-    :user_id, :session, :users_attributes, :sessions_attributes
+    :user_id, :users_attributes
 
   attr_accessor :stripe_card_token
 

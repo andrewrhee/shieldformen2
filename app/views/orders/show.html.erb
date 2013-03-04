@@ -8,7 +8,49 @@
     </aside>
     <div class="span9">
         <div class="content">
-        <h3>Personal Info:</h3>
+        
+
+        <% if @order.line_items.any? %>
+
+        <h3>Order Information:</h3>
+        
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              
+                <% @order.line_items.each do |line_item| %>
+              <tr>
+                
+                <td><%= line_item.quantity %></td> 
+                
+                <td><%= image_tag(line_item.product.image_url, class: "cart-image") %></td>
+                <td><%= link_to line_item.product.title, line_item.product %></td>
+                <td><%= number_to_currency(line_item.product.price * line_item.quantity ) %></td>
+                <% end %>
+              </tr>
+              
+              
+              <tr>
+              <td>&nbsp;</td>
+
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><strong><%= number_to_currency(@order.price) %></strong></td>
+              </tr>     
+            </tbody>
+            </table>
+        
+          <% end %>
+
+          <h3>Personal Info:</h3>
         <p>
           <b>Email:</b>
           <%= @order.email %>
@@ -20,85 +62,72 @@
         </p>
         <h3>Billing Info:</h3>
         <p>
-          <b>Bill to first name:</b>
+          <b>First Name:</b>
           <%= @order.bill_to_first_name %>
         </p>
 
         <p>
-          <b>Bill to last name:</b>
+          <b>Last Name:</b>
           <%= @order.bill_to_last_name %>
         </p>
 
         <p>
-          <b>Bill to address:</b>
+          <b>Address:</b>
           <%= @order.bill_to_address %>
         </p>
 
         <p>
-          <b>Bill to city:</b>
+          <b>City:</b>
           <%= @order.bill_to_city %>
         </p>
 
         <p>
-          <b>Bill to state:</b>
+          <b>State:</b>
           <%= @order.bill_to_state %>
         </p>
 
         <p>
-          <b>Bill to postal code:</b>
+          <b>Zip Code:</b>
           <%= @order.bill_to_postal_code %>
         </p>
         <h3>Shipping Info:</h3>
         <p>
-          <b>Ship to first name:</b>
+          <b>First Name:</b>
           <%= @order.ship_to_first_name %>
         </p>
 
         <p>
-          <b>Ship to last name:</b>
+          <b>Last Name:</b>
           <%= @order.ship_to_last_name %>
         </p>
 
         <p>
-          <b>Ship to address:</b>
+          <b>Address:</b>
           <%= @order.ship_to_address %>
         </p>
 
         <p>
-          <b>Ship to city:</b>
+          <b>City:</b>
           <%= @order.ship_to_city %>
         </p>
 
         <p>
-          <b>Ship to state:</b>
+          <b>State:</b>
           <%= @order.ship_to_state %>
         </p>
 
         <p>
-          <b>Ship to postal code:</b>
+          <b>Zip Code:</b>
           <%= @order.ship_to_postal_code %>
         </p>
-
+        <% if current_user.admin? %>
+        <h3>Customer Details:</h3>
         <p>
           <b>Customer ip:</b>
           <%= @order.customer_ip %>
         </p>
-
-        <p>
-          <b>Status:</b>
-          <%= @order.status %>
-        </p>
-
-        <p>
-          <b>Error message:</b>
-          <%= @order.error_message %>
-        </p>
-
-        <p>
-          <b>Price:</b>
-          <%= @order.price %>
-        </p>
-
+        <% end %>
+        
         </div>
     </div>
 </div>
