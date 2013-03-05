@@ -1,0 +1,24 @@
+
+<%= provide(:title, 'Show discount') %>
+<div class="row">
+  <aside class="span3">
+    <section>
+      
+    </section>
+    <%= render 'shared/admin-left-nav' %>
+  </aside>
+  <div class="span9">
+    <div class="content">
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <b>Discount code:</b>
+		  <%= @discount.discount_code %>
+		</p>
+
+
+		<%= link_to 'Edit', edit_discount_path(@discount) %> |
+		<%= link_to 'Back', discounts_path %>
+		</div>
+	</div>
+</div>

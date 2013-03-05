@@ -84,4 +84,54 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /line_items/1
+  # POST /line_items/1.json
+  def decrement
+    @cart = current_cart
+
+    # 1st way: decrement through method in @cart
+    @line_item = @cart.decrement_line_item_quantity(params[:id]) # passing in line_item.id
+
+    # 2nd way: decrement through method in @line_item
+    #line_item = @cart.line_items.find_by_id(params[:id])
+    #line_item = @line_item.decrement_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart_path(@cart), notice: 'Product deleted.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {@current_item = @line_item}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /line_items/1
+  # POST /line_items/1.json
+  def increment
+    @cart = current_cart
+
+    # 1st way: increment through method in @cart
+    @line_item = @cart.increment_line_item_quantity(params[:id]) # passing in line_item.id
+
+    # 2nd way: increment through method in @line_item
+    #@line_item = @cart.line_items.find_by_id(params[:id])
+    #@line_item = @line_item.increment_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart_path(@cart), notice: 'Product added.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

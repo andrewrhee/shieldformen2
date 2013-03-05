@@ -1,0 +1,36 @@
+<%= provide(:title, 'Listing discounts') %>
+<div class="row">
+  <aside class="span3">
+    <section>
+      
+    </section>
+    <%= render 'shared/admin-left-nav' %>
+  </aside>
+  <div class="span9">
+    <div class="content">
+    <h1>Listing discounts</h1>
+
+    <table>
+      <tr>
+        <th>Discount code</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @discounts.each do |discount| %>
+      <tr>
+        <td><%= discount.discount_code %></td>
+        <td><%= link_to 'Show', discount %></td>
+        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
+        <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Discount', new_discount_path %>
+    </div>
+  </div>
+</div>

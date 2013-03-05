@@ -1,8 +1,11 @@
 <tr>
-<td class=""><input type="checkbox" value="option1" id="optionsCheckbox"></td>
+<td>
+	<%= button_to "+", increment_line_item_path(line_item), method: :post, form_class: 'add-remove' , class: 'btn btn-small btn-inverse' %>
+	<%= button_to "-", decrement_line_item_path(line_item), method: :post, form_class: 'add-remove', class: 'btn btn-small btn-inverse' %> 
+</td>
 <td class="muted center_text"><%= image_tag(line_item.product.image_url, class: "cart-image") %></td>
 <td><%= line_item.product.title %></td>
-<td><input type="text" placeholder="1" value="<%= line_item.quantity %>" class="input-mini"></td>
+<td><%= line_item.quantity %></td>
 <td><%= number_to_currency(line_item.product.price) %></td>
 <td><%= number_to_currency(line_item.total_price) %></td>
 </tr>

@@ -1,9 +1,16 @@
 Shieldformen2::Application.routes.draw do
 
+  resources :discounts
+
+
   resources :plans
 
   resources :orders
 
+  resources :line_items do
+    post 'decrement', on: :member
+    post 'increment', on: :member
+  end
 
   resources :line_items
 
@@ -30,6 +37,8 @@ Shieldformen2::Application.routes.draw do
   %w[works trial about contact].each do |page|
     get page, controller: "static_pages", action: page
   end
+
+  
 
   # match '/works',   to: 'static_pages#works'
   # match '/trial',   to: 'static_pages#trial'
