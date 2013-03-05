@@ -1,4 +1,4 @@
-require "rspec/core"
+require "rspec"
 
 namespace :db do	
 	desc "Fill database with sample data"
