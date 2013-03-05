@@ -20,6 +20,7 @@ class Order < ActiveRecord::Base
   belongs_to :sessions
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items
+  has_many :discounts, through: :line_items
 
   accepts_nested_attributes_for :users
 

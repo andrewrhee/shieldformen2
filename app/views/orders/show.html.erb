@@ -37,7 +37,14 @@
                 <% end %>
               </tr>
               
-              
+              <% @order.line_items.each do |line_item| %>
+                <% if line_item.discount != nil %>
+                <td><b>Discount:</b></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><%= line_item.discount.id %></td>
+                <% end %>
+              <% end %>
               <tr>
               <td>&nbsp;</td>
 

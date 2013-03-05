@@ -62,13 +62,14 @@ class CartsController < ApplicationController
   # PUT /carts/1.json
   def update
     @cart = Cart.find(params[:id])
-
+    @discounts = @cart.discounts.new(:discount_code => params[:cart][:discount][:discount_code])
+    @discount = @discounts.discount_code.to_s
     respond_to do |format|
-      if @cart.update_attributes(params[:cart])
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+      if Discount.find_by_discount_code(@discount)
+        format.html { redirect_to @cart, notice: 'Discount code was valid.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to @cart, notice: "Discount code was invalid." }
         format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end

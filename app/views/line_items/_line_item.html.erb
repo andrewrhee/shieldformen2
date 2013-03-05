@@ -1,7 +1,11 @@
 <tr>
 <td>
-	<%= button_to "+", increment_line_item_path(line_item), method: :post, form_class: 'add-remove' , class: 'btn btn-small btn-inverse' %>
-	<%= button_to "-", decrement_line_item_path(line_item), method: :post, form_class: 'add-remove', class: 'btn btn-small btn-inverse' %> 
+	<div class="add-remove">
+	<%= button_to "+", increment_line_item_path(line_item), method: :post, class: 'btn btn-small btn-inverse' %>
+	</div>
+	<div class="add-remove">
+	<%= button_to "-", decrement_line_item_path(line_item), method: :post, class: 'btn btn-small btn-inverse' %> 
+	</div>
 </td>
 <td class="muted center_text"><%= image_tag(line_item.product.image_url, class: "cart-image") %></td>
 <td><%= line_item.product.title %></td>

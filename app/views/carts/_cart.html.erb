@@ -31,12 +31,12 @@
 </table>
 		  
 
-
+<%= form_for(@cart) do |f| %>
 <fieldset>
   <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
-
+      <%= f.fields_for :discount do |f2| %>
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
         <h3>Apply discount code</h3>
       </a>
@@ -44,13 +44,14 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <div class="control-group">
-          <label for="input01" class="control-label">Discount code: </label>
+          <%= f2.label :discount_code, 'Discount code:', class: 'control-label' %>
           <div class="controls">
-            <input type="text" id="input01" class="input-xlarge" placeholder="Enter your coupon here">
+            <%= f2.text_field :discount_code, placeholder: 'Enter your coupon here', class: 'input-xlarge' %>
             <p class="help-block">You can only use one discount code at a time</p>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 
@@ -76,7 +77,7 @@
 
 <div class="row">
 <div class="span5">
-      <button class="btn btn-primary" type="submit">Update</button>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
 </div>		  
 <div class="span5">
     <%= button_to "Continue shopping", store_url, class: "btn btn-primary" %>
@@ -86,7 +87,7 @@
 </div>
 </div>
   </fieldset>
-
+<% end %>
 </div>
 </div>
 </div>

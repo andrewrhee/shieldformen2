@@ -1,9 +1,12 @@
 class Cart < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :line_items, dependent: :destroy
-  has_many :coupons
 
-  accepts_nested_attributes_for :coupons
+  has_many :discounts, through: :line_items
+
+  accepts_nested_attributes_for :discounts
+
+  attr_accessible :discounts_attributes
 
 
   def decrement_line_item_quantity(line_item_id)
