@@ -59,6 +59,7 @@ class OrdersController < ApplicationController
       if @order.save && @order.save_with_payment
           
           Cart.destroy(session[:cart_id])
+          session[:discount_price] = nil
           session[:cart_id] = nil
           format.html { redirect_to store_url, 
             notice: 'Thank you for your order.' }
@@ -78,6 +79,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
+        session[:discount_price] = nil
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else

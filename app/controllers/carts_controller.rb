@@ -20,8 +20,16 @@ class CartsController < ApplicationController
       redirect_to store_url, notice: 'Invalid cart'
     else
       respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @cart }
+        if session[:discount_code] != nil
+          Discount.find_by_discount_code(session[:discount_code])
+          discount_factor = @cart.find_discount_factor(session[:discount_code])
+          session[:discount_price] = @cart.discount_price(discount_factor)
+          format.html # show.html.erb
+          format.json { render json: @cart }
+        else
+          format.html # show.html.erb
+          format.json { render json: @cart }
+        end
       end
     end
   end
@@ -63,9 +71,11 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     @discounts = @cart.discounts.new(:discount_code => params[:cart][:discount][:discount_code])
-    @discount = @discounts.discount_code.to_s
+    session[:discount_code] = @discounts.discount_code.to_s
     respond_to do |format|
-      if Discount.find_by_discount_code(@discount)
+      if Discount.find_by_discount_code(session[:discount_code])
+        discount_factor = @cart.find_discount_factor(session[:discount_code])
+        session[:discount_price] = @cart.discount_price(discount_factor)
         format.html { redirect_to @cart, notice: 'Discount code was valid.' }
         format.json { head :no_content }
       else

@@ -19,13 +19,32 @@
 
   <%= render (@cart.line_items) %>  
   
+  <% if session[:discount_price] != nil %>
   <tr>
-	<td>&nbsp;</td>
+  <td><b>Discount Applied:</b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td><strong>-<%= number_to_currency(@cart.total_price - session[:discount_price]) %></strong></td>
+  </tr>
+  <tr>
+  <td><b>Discount Total:</b></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td><strong><%= number_to_currency(session[:discount_price]) %></strong></td>
+  </tr>
+  <% else %>
+  <tr>
+	<td><b>Total:</b></td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td><strong><%= number_to_currency(@cart.total_price) %></strong></td>
+  <% end %>
   </tr>		  
 </tbody>
 </table>

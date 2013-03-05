@@ -13,6 +13,7 @@
     <table>
       <tr>
         <th>Discount code</th>
+        <th>Discount factor</th>
         <th></th>
         <th></th>
         <th></th>
@@ -21,6 +22,7 @@
     <% @discounts.each do |discount| %>
       <tr>
         <td><%= discount.discount_code %></td>
+        <td><%= discount.discount_factor %></td>
         <td><%= link_to 'Show', discount %></td>
         <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
         <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>

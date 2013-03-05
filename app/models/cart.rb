@@ -41,6 +41,19 @@ class Cart < ActiveRecord::Base
     line_items.to_a.sum { |item| item.quantity }
   end
 
+
+ 
+  def find_discount_factor(discount_code)
+    discount = Discount.find_by_discount_code(discount_code)
+    discount_factor = discount.discount_factor
+  end
+
+  def discount_price(discount_factor)
+    discount_price = total_price - (total_price * discount_factor)
+    discount_price
+  end
+
+
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
