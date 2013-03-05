@@ -1,4 +1,7 @@
-namespace :db do
+require "rspec"
+
+namespace :db do	
+	describe "Fill database with sample data"
 	task populate: :environment do
 		admin = User.create!(name: "Example User",
 								 				 email: "example@example.com",
