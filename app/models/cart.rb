@@ -37,6 +37,16 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  def add_product_with_code(product_id, discount_id)
+    current_item = line_items.find_by_product_id(product_id)
+    if current_item
+      current_item.discount_id = discount_id
+    else
+      current_item = line_items.build(product_id: product_id, discount_id: discount_id)
+    end
+    current_item
+  end
+
   def quantity
     line_items.to_a.sum { |item| item.quantity }
   end

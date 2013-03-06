@@ -48,6 +48,12 @@ class Order < ActiveRecord::Base
  		end
  	end
 
+  def add_discount_code_from_cart(cart, discount)
+    cart.line_items.each do |item|
+      item.discount = discount
+    end
+  end
+
   def save_with_payment
     if valid?
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
@@ -59,4 +65,5 @@ class Order < ActiveRecord::Base
     errors.add :base, "There was a problem with your credit card."
     false
   end
+
 end

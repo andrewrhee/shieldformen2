@@ -24,14 +24,14 @@
 			<% if @user.orders.any? %>
 				<h3>Your Orders</h3>
 				<% @user.orders.each do |order| %>
-				<ol>
+				<ul>
 					<li>
 					<span><%= link_to "SFM1201#{order.id}", order_path(order.id) %></span>
 					<span class="timestamp">
 						Ordered <%= time_ago_in_words(order.created_at) %> ago.
 					</span>
 					</li>
-				</ol>
+				</ul>
 				<% end %>
 			<% end %>
 		</div>

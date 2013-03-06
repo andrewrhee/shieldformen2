@@ -52,7 +52,15 @@ class OrdersController < ApplicationController
     @user = current_user
     @order.user_id = @user.id
     @order.customer_ip = request.remote_ip
-    @order.price = total_price
+
+    if session[:discount_code] != nil
+      @order.original_price = total_price
+      @order.price = session[:discount_price]
+      @discount = Discount.find_by_discount_code(session[:discount_code])
+      @order.add_discount_code_from_cart(current_cart, @discount)
+    else
+      @order.price = total_price
+    end
     @order.add_line_items_from_cart(current_cart)
 
     respond_to do |format|
@@ -60,6 +68,7 @@ class OrdersController < ApplicationController
           
           Cart.destroy(session[:cart_id])
           session[:discount_price] = nil
+          session[:discount_code] = nil
           session[:cart_id] = nil
           format.html { redirect_to store_url, 
             notice: 'Thank you for your order.' }

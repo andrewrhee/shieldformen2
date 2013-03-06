@@ -39,14 +39,22 @@
               
               <% @order.line_items.each do |line_item| %>
                 <% if line_item.discount != nil %>
-                <td><b>Discount:</b></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td><%= line_item.discount.id %></td>
+                <tr>
+                  <td><b>Discount Code Used:</b></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td><%= line_item.discount.discount_code %></td>
+                </tr>
+                <tr>
+                  <td><b>Discount Amount:</b></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>-<%= number_to_currency(@order.original_price - @order.price) %></td>
+                </tr>
                 <% end %>
               <% end %>
               <tr>
-              <td>&nbsp;</td>
+              <td><b>Total:</b></td>
 
               <td>&nbsp;</td>
               <td>&nbsp;</td>

@@ -42,6 +42,7 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
+    session[:product] = product
     @line_item = @cart.add_product(product.id)
     @line_item.product = product
 

@@ -21,9 +21,10 @@ class CartsController < ApplicationController
     else
       respond_to do |format|
         if session[:discount_code] != nil
-          Discount.find_by_discount_code(session[:discount_code])
+          discount = Discount.find_by_discount_code(session[:discount_code])
           discount_factor = @cart.find_discount_factor(session[:discount_code])
           session[:discount_price] = @cart.discount_price(discount_factor)
+          
           format.html # show.html.erb
           format.json { render json: @cart }
         else
@@ -74,8 +75,15 @@ class CartsController < ApplicationController
     session[:discount_code] = @discounts.discount_code.to_s
     respond_to do |format|
       if Discount.find_by_discount_code(session[:discount_code])
+        @discount = Discount.find_by_discount_code(session[:discount_code])
+        @product = Product.find(session[:product])
+
+        @discount = @cart.add_product_with_code(@product.id, @discount.id)
+        @discount.save!
+
         discount_factor = @cart.find_discount_factor(session[:discount_code])
         session[:discount_price] = @cart.discount_price(discount_factor)
+
         format.html { redirect_to @cart, notice: 'Discount code was valid.' }
         format.json { head :no_content }
       else
