@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   
   has_many :line_items
   has_many :orders, through: :line_items
+  has_many :ratings
+  has_many :raters, :through => :ratings, :source => :users
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -17,6 +19,15 @@ class Product < ActiveRecord::Base
 
   belongs_to :user
 
+  def average_rating
+    @value = 0
+    self.ratings.each do |rating|
+      @value = @value + rating.value
+    end
+    @total = self.ratings.size
+    @value.to_f / @total.to_f
+  end
+
   private
 
   	# ensure that there are no line items referencing this product
@@ -28,4 +39,7 @@ class Product < ActiveRecord::Base
   			return false
   		end
   	end
+
+
+
 end

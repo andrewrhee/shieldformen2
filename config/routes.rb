@@ -38,6 +38,7 @@ Shieldformen2::Application.routes.draw do
     get page, controller: "static_pages", action: page
   end
 
+  resources :ratings
   
 
   # match '/works',   to: 'static_pages#works'

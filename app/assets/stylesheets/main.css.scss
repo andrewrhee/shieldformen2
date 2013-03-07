@@ -1,3 +1,6 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -9,6 +12,28 @@ $grayMediumLight: #eaeaea;
 }
 
 /* Global Area */
+
+body { 
+	background: #f2f2f2;
+}
+
+a { 
+	color: #7f9937;
+}
+
+a:hover {
+	color: #9ac721;
+}
+
+.btn-primary {
+	background: #7f9937;
+	border: 1px solid #667a2c;
+}
+
+.btn-primary:hover {
+	background: #9ac721;
+	border: 1px solid #7f9937;
+}
 
 h3 {
 	font-size: 18px;
@@ -696,6 +721,15 @@ input {
 	}
 }
 
+/* star-rating-system */
+
+form.rating_ballot input#rating_submit, form.all_rating input#rating_submit { display: none; }
+form.rating_ballot input.rating_button, form.all_rating input.rating_button { display: none; }
+form.rating_ballot label.rating, form.all_rating label.rating { cursor: pointer; display: block; height: 20px; width: 20px; float: left; }
+form.rating_ballot label.rating span, form.all_rating label.rating span { display: none; }
+.star-rating-system label.rating { background: url('star-dim.png'); }
+.star-rating-system label.rating.bright { background: url('star-bright.png'); }
+.star-rating-system label.rating.glow { background: url('star-glow.png'); }
 
 
 /* Landscape phone to portrait tablet */

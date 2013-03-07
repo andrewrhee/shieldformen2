@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
 	has_many :products
 	has_many :orders, dependent: :destroy
+	has_many :ratings
+	has_many :rated_products, :through => :ratings, :source => :products
 
 
 	private
